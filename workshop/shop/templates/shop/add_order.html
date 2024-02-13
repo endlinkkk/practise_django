@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Администратор{% endblock title %}
+{% block role %}Администратор{% endblock role %}
+
+{% block content %}
+<div class="card">
+    <h5 class="card-header">Добавление нового заказа</h5>
+    <div class="card-body">
+        <form method="post" action={% url "add_order" %}>
+            {% csrf_token %}
+            <div class="form-outline mb-4">
+                <table>
+                    {{ form.as_table }}
+                </table>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Добавить</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

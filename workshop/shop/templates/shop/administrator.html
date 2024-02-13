@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Администратор{% endblock title %}
+{% block role %}Администратор{% endblock role %}
+
+{% block content %}
+<div class="card">
+    <h5 class="card-header">Список клиентов</h5>
+    <div class="card-body">
+        {% for client in clients %}
+        <table>
+                <br>
+                Имя: {{client.full_name}}
+                <br>
+                Дата рождения: {{client.birth_date}}
+                <br>
+                Домашний адрес: {{client.home_address}}
+                <br>
+                Номера телефона: {{client.phone_number}}
+                <br>
+            
+        </table>
+        {% endfor %}
+        <br>
+        <form method="get" action={% url "add_client" %}>
+            <button type="submit" class="btn btn-primary btn-block">Добавить нового клиента</button>
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <h5 class="card-header">Список мастеров</h5>
+    <div class="card-body">
+        {% for master in masters %}
+        <table>
+            <br>
+            Имя: {{master.full_name}}
+            <br>
+        </table>
+        {% endfor %}
+        <br>
+        <form method="get" action={% url "add_master" %}>
+            <button type="submit" class="btn btn-primary btn-block">Добавить нового мастера</button>
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <h5 class="card-header">Список заказов</h5>
+    <div class="card-body">
+        {% for order in orders %}
+        <table>
+                <br>
+                Клиент: {{order.client}}
+                <br>
+                Дата и время приема заказа: {{order.order_date_time}}
+                <br>
+                Тип выполняемой работы: {{order.work_type}}
+                <br>
+                Тариф: {{order.tariff}}
+                <br>
+                Мастер: {{order.master}}
+                <br>
+            
+        </table>
+        <br>
+        {% endfor %}
+        <form method="get" action={% url "add_order" %}>
+            <button type="submit" class="btn btn-primary btn-block">Добавить новый заказ</button>
+        </form>
+        
+    </div>
+</div>
+{% endblock content %}

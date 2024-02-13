@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Мастер{% endblock title %}
+{% block role %}Мастер{% endblock role %}
+
+{% block content %}
+<div class="card">
+    <h5 class="card-header">Список заказов</h5>
+    <div class="card-body">
+        {% for order in orders %}
+        <table>
+                <br>
+                Клиент: {{order.client}}
+                <br>
+                Дата и время приема заказа: {{order.order_date_time}}
+                <br>
+                Тип выполняемой работы: {{order.work_type}}
+                <br>
+                Тариф: {{order.tariff}}
+                <br>
+                Мастер: {{order.master}}
+                <br>
+            
+        </table>
+        <br>
+        {% endfor %}
+        <form method="get" action={% url "add_order" %}>
+            <button type="submit" class="btn btn-primary btn-block">Добавить новый заказ</button>
+        </form>
+        
+    </div>
+</div>
+{% endblock content %}

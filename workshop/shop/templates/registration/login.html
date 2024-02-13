@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %} Вход в систему {% endblock title %}
+{% block role %}Авторизация{% endblock role %}
+
+{% block content %}
+    <div class="card mx-auto">
+        <h5 class="card-header text-center">Авторизация</h5>
+            <div class="card-body">
+                <form method="post" action="{% url 'login' %}">
+                    <div class="form-outline mb-4">
+                        {% csrf_token %}
+                        <table>
+                            <tr>
+                                <td style="padding-right: 10px">Имя пользователя</td>
+                                <td> {{form.username }}</td>
+                            </tr>
+                            <tr>
+                            <td style="padding-right: 10px">Пароль</td>
+                            <td>{{ form.password }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                <button type="submit" class="btn btn-primary btn-block">Вход</button>
+                
+                </form>
+            </div>
+    </div>
+{% endblock content %}
